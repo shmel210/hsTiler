@@ -1,5 +1,5 @@
 <?php
-    
+
     class GDImageProcessor implements IImageProcessor {
 
         private $images = array();
@@ -18,7 +18,7 @@
         }
 
         public function getImage ($href) {
-            if ($this->images[$href]) {
+            if (isset($this->images[$href])) {
                 return $this->images[$href];
             }
 

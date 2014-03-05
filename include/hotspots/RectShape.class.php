@@ -46,12 +46,17 @@
         }
 
         public function getDescription ($base) {
-            return '[' .
-                ($this->left - $base->getX()) . ',' .
-                ($this->bottom - $base->getY()) . ',' .
-                ($this->right - $base->getX()) . ',' .
-                ($this->top - $base->getY()) .
-            ']';
+            $shape = array(
+              array($this->left - $base->getX(), $this->bottom - $base->getY()),
+              array($this->right - $base->getX(), $this->top - $base->getY()),
+            );
+            return $shape;
+//            return '[' .
+//                ($this->left - $base->getX()) . ',' .
+//                ($this->bottom - $base->getY()) . ',' .
+//                ($this->right - $base->getX()) . ',' .
+//                ($this->top - $base->getY()) .
+//            ']';
         }
     }
 

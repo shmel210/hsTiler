@@ -11,30 +11,65 @@
         private $long, $lat, $pixelOffsets, $style, $data, $priority,
                 $cache = array ();
 
-        public function __construct ($json, $groupStyle) {
-            $parts = explode(' ', $json['Point']['pos']);
-            $this->long = floatval($parts[0]);
-            $this->lat = floatval($parts[1]);
+public function __construct($json, $groupStyle)
+  {
+    $parts      = explode(' ', $json['Point']['pos']);
+    $this->long = floatval($parts[0]);
+    $this->lat  = floatval($parts[1]);
 
-            $style = isset($json['style']) ? $json['style'] : NULL;
-            $this->style = Styles::getComputedStyle($style, $groupStyle, true);
+    $style       = isset($json['style']) ? $json['style'] : NULL;
+    $this->style = Styles::getComputedStyle($style, $groupStyle, true);
 
-            $metaData = isset($json['metaDataProperty']) && isset($json['metaDataProperty']['AnyMetaData']) ?
-                            $json['metaDataProperty']['AnyMetaData'] :
-                            array();
-            
-            $this->priority = isset($metaData['priority']) ? floatval($metaData['priority']) : 0;
+    $metaData = isset($json['metaDataProperty']) && isset($json['metaDataProperty']['AnyMetaData']) ?
+      $json['metaDataProperty']['AnyMetaData'] :
+      array();
 
-            $size = $this->style['iconStyle']['size'];
-            $offset = $this->style['iconStyle']['offset'];
+    $this->priority = isset($metaData['priority']) ? floatval($metaData['priority']) : 0;
 
-            $this->pixelOffsets = array(
-                intval($offset['x']), intval($offset['y']),
-                intval($size['x']) + intval($offset['x']), intval($size['y']) + intval($offset['y'])
-            );
+    $size   = $this->style['iconStyle']['size'];
+    $offset = $this->style['iconStyle']['offset'];
 
-            $this->data = $json;
-        }
+    $this->pixelOffsets = array(
+      intval($offset['x']), intval($offset['y']),
+      intval($size['x']) + intval($offset['x']), intval($size['y']) + intval($offset['y'])
+    );
+    $new_json = array(
+        'type'       => 'Feature',
+        'properties' => array(
+          'balloonContentHeader' => $json['name'],
+          'balloonContentBody' => $json['description'],
+        ),
+        'HotspotMetaData' => array(
+          'id' => time(),
+          'RenderedGeometry' => array(
+            'type' => 'Rectangle',
+            'coordinates' => array(1, 2, 3, 4)
+          ),
+        ),
+      );
+//    $json['type']     = '"FeatureCollection"';
+//    $json['features'] = array(
+//      array(
+//        'type'       => 'Feature',
+//        'properties' => array(
+//          'balloonContentBody' => '',
+//          'balloonContentHeader' => '',
+//          'balloonContentFooter' => '',
+//        ),
+//        'HotspotMetaData' => array(
+//          'id' => time(),
+//          'RenderedGeometry' => array(
+//            'type' => 'Rectangle',
+//            'coordinates' => array(1, 2, 3, 4)
+//          ),
+//        ),
+//      )
+//    );
+//    echo print_r($new_json);
+//    die();
+    $this->data = $new_json;
+
+  }
 
         public function intersects ($tileNumber, $zoom) {
             $shapes = $this->getPixelShapes($zoom);
@@ -65,7 +100,8 @@
                     $shapesDescription[] = $shape->getDescription($pixelCenter);
                 }
             }
-
+            $this->data['HotspotMetaData']['RenderedGeometry']['coordinates'] = $shapesDescription[0];
+            die();
             return '{' .
                 '"data":' . json_encode($this->data) . ',' .
                 '"style":' . json_encode($style) . ',' .

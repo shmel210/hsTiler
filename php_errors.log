@@ -1,0 +1,14 @@
+[05-Mar-2014 18:21:11] PHP Notice:  Undefined offset: 1 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 104
+[05-Mar-2014 18:21:11] PHP Notice:  Undefined offset: 2 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 105
+[05-Mar-2014 18:21:11] PHP Notice:  Undefined offset: 3 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 105
+[05-Mar-2014 18:21:59] PHP Notice:  Undefined offset: 1 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 104
+[05-Mar-2014 18:21:59] PHP Notice:  Undefined offset: 2 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 105
+[05-Mar-2014 18:21:59] PHP Notice:  Undefined offset: 3 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 105
+[05-Mar-2014 18:21:59] PHP Warning:  print_r() expects parameter 2 to be boolean, array given in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 108
+[05-Mar-2014 18:22:07] PHP Notice:  Undefined offset: 1 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 104
+[05-Mar-2014 18:22:07] PHP Notice:  Undefined offset: 2 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 105
+[05-Mar-2014 18:22:07] PHP Notice:  Undefined offset: 3 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 105
+[05-Mar-2014 18:22:07] PHP Warning:  print_r() expects parameter 2 to be boolean, array given in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 108
+[05-Mar-2014 18:22:30] PHP Notice:  Undefined offset: 1 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 104
+[05-Mar-2014 18:22:30] PHP Notice:  Undefined offset: 2 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 105
+[05-Mar-2014 18:22:30] PHP Notice:  Undefined offset: 3 in /home/developer/download/hsTiler/include/hotspots/PointHotspot.class.php on line 105

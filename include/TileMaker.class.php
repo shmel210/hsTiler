@@ -115,8 +115,8 @@
             if (count($hotspots) > 0 && self::$zoom >= self::$options['minZoom']) {
 
                 $image = Application::get()->imageProcessor->createTile();
-
-                $description = 'YMaps.Hotspots.Loader.onLoad("' . self::getKey($tile) . '",{"objects":[';
+                $description = self::getKey($tile).'({';
+//                $description = 'YMaps.Hotspots.Loader.onLoad("' . self::getKey($tile) . '",{"objects":[';
 
                 usort($hotspots, array(__CLASS__, 'priorityCompare'));
 
@@ -129,7 +129,7 @@
                     $isNotEmpty = true;
                 }
 
-                $description .= ']});';
+                $description .= '});';
 
                 $imageFilename = self::$options['directory'].'/'.self::getImageName($tile);
                 self::makeDir(dirname($imageFilename));
@@ -196,10 +196,10 @@
             $hint = Templates::trim($hint);
             $balloon = Templates::trim($balloon);
 
-            if (!self::$styles[$hint]) {
+            if (empty(self::$styles[$hint])) {
                 self::$styles[$hint] = array();
             }
-            if (!self::$styles[$hint][$balloon]) {
+            if (empty(self::$styles[$hint][$balloon])) {
                 self::$styles[$hint][$balloon] = 'style' . (self::$styleNumber++);
             }
             return self::$styles[$hint][$balloon];
