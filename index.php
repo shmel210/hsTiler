@@ -22,7 +22,7 @@
         // Шаблон имени тайла с описанием данных
         'jsTemplate' => 'js/%z/tile-%x-%y.js',
         // Шаблон ключа запроса
-        'keyTemplate' => 'myLayer-%x-%y-%z',
+        'keyTemplate' => 'myLayer_%x_%y_%z',
         // Префикс имени стиля
         'styleKey' => 'myLayer',
         // Имя файла со стилями

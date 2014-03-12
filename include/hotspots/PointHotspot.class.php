@@ -38,12 +38,12 @@ public function __construct($json, $groupStyle)
         'properties' => array(
           'balloonContentHeader' => $json['name'],
           'balloonContentBody' => $json['description'],
-        ),
-        'HotspotMetaData' => array(
-          'id' => time(),
-          'RenderedGeometry' => array(
-            'type' => 'Rectangle',
-            'coordinates' => array(1, 2, 3, 4)
+          'HotspotMetaData' => array(
+            'id' => time(),
+            'RenderedGeometry' => array(
+              'type' => 'Rectangle',
+              'coordinates' => array(1, 2, 3, 4)
+            ),
           ),
         ),
       );
@@ -100,15 +100,16 @@ public function __construct($json, $groupStyle)
                     $shapesDescription[] = $shape->getDescription($pixelCenter);
                 }
             }
-            $this->data['HotspotMetaData']['RenderedGeometry']['coordinates'] = $shapesDescription[0];
-            die();
-            return '{' .
-                '"data":' . json_encode($this->data) . ',' .
-                '"style":' . json_encode($style) . ',' .
-                '"base":new YMaps.GeoPoint(' . $this->long . ',' . $this->lat . '),' .
-                '"geometry":[' . join(',', $shapesDescription) . '],' .
-                '"priority":' . $this->priority .
-            '}';
+            $this->data['properties']['HotspotMetaData']['RenderedGeometry']['coordinates'] = $shapesDescription[0];
+//            die();
+            return json_encode($this->data);
+//            return '{' .
+//                '"data":' . json_encode($this->data) . ',' .
+//                '"style":' . json_encode($style) . ',' .
+//                '"base":new YMaps.GeoPoint(' . $this->long . ',' . $this->lat . '),' .
+//                '"geometry":[' . join(',', $shapesDescription) . '],' .
+//                '"priority":' . $this->priority .
+//            '}';
         }
 
         public function getPriority () {

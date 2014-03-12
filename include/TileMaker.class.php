@@ -115,7 +115,7 @@
             if (count($hotspots) > 0 && self::$zoom >= self::$options['minZoom']) {
 
                 $image = Application::get()->imageProcessor->createTile();
-                $description = self::getKey($tile).'({';
+                $description = self::getKey($tile).'({"data": {"type": "FeatureCollection","features": [';
 //                $description = 'YMaps.Hotspots.Loader.onLoad("' . self::getKey($tile) . '",{"objects":[';
 
                 usort($hotspots, array(__CLASS__, 'priorityCompare'));
@@ -129,7 +129,9 @@
                     $isNotEmpty = true;
                 }
 
-                $description .= '});';
+                $description .= ']}});';
+//                echo $description;
+//                die();
 
                 $imageFilename = self::$options['directory'].'/'.self::getImageName($tile);
                 self::makeDir(dirname($imageFilename));
